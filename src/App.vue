@@ -1,17 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+<p> {{ message }}</p>
+<ContactList/>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import ContactList from './components/ContactList.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      message: "xxxxxxxx"
+    }
+  },
   components: {
-    HelloWorld
+    ContactList
+  },
+
+  mounted() {
+    console.log(`App component is now mounted.`)
   }
 }
+
 </script>
 
 <style>
