@@ -5,11 +5,17 @@
   @setUser="setSelectedUser"
 />
 
+<DisplayUser
+:user=selectedUser
+/>
+
 </template>
 
 <script>
 
 import ContactList from './components/ContactList.vue'
+import DisplayUser from './components/DisplayUser.vue'
+
 
 export default {
   name: 'App',
@@ -21,11 +27,12 @@ export default {
   },
   methods: {
     setSelectedUser(value){
-      console.log(value)
+      this.selectedUser = value
     }
   },
   components: {
-    ContactList
+    ContactList,
+    DisplayUser
   },
 
   mounted() {

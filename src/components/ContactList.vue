@@ -6,7 +6,7 @@
 
     <div v-if="users.length">
 
-      <div v-for="(value) in filteredUsers" >
+      <div v-for="value in filteredUsers" >
           <p @click="$emit('setUser', value)"> {{ value.name }}</p>
       </div>
 
