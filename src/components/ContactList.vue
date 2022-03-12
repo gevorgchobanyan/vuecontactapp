@@ -3,7 +3,7 @@
 
     <h3> Contact List</h3>
     <input 
-      class="form-control mr-sm-2" 
+      class="form-control mr-sm-2 " 
       type="text" 
       placeholder="Search" 
       aria-label="Search" 

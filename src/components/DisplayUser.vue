@@ -1,42 +1,53 @@
 <template>
-  <div class="position-absolute top-0 end-0 w-50">
+  <div class="position-absolute top-0 end-0 w-75 border">
     <h3> Display User Details</h3>
 
 
-      <div v-if="Object.keys(user).length!== 0">
 
 
-        <h4> User </h4>
-        <ul class="list-group">
 
-          <li class="list-group-item list-group-item-action"> name: {{ user.name }} </li>
-          <li class="list-group-item list-group-item-action"> username: {{ user.username }} </li>
-          <li class="list-group-item list-group-item-action"> email: {{ user.email }} </li>
-          <li class="list-group-item list-group-item-action"> phone: {{ user.phone }} </li>
-          <li class="list-group-item list-group-item-action"> website: {{ user.website }} </li>
+        <div class="container border">
+          <div class="row">
 
-          <h4> Address </h4>
-          <div v-for="(value, key) in user.address" >
-            <div v-if="key === 'geo'"> 
-              <div v-for="(nestedValue, nestedKey) in value">
-                <li v-if="nestedKey === 'lat'" class="list-group-item list-group-item-action"> 
-                  latitude: {{ nestedValue }} 
-                </li>
-                <li v-else class="list-group-item list-group-item-action"> longitude: {{ nestedValue }} </li>
+           <div class="col">
+            <h4> User </h4>
+            <ul class="list-group" v-if="Object.keys(user).length!== 0">
+              <li class="list-group-item list-group-item-action"> name: {{ user.name }} </li>
+              <li class="list-group-item list-group-item-action"> username: {{ user.username }} </li>
+              <li class="list-group-item list-group-item-action"> email: {{ user.email }} </li>
+              <li class="list-group-item list-group-item-action"> phone: {{ user.phone }} </li>
+              <li class="list-group-item list-group-item-action"> website: {{ user.website }} </li>
+            </ul>
+           </div> 
+
+          <div class="col">
+            <h4> Address </h4>
+            <ul class="list-group" v-if="Object.keys(user).length!== 0">
+              <div v-for="(value, key) in user.address" >
+                <div v-if="key === 'geo'"> 
+<!--                   <div v-for="(nestedValue, nestedKey) in value">
+                    <li v-if="nestedKey === 'lat'" class="list-group-item list-group-item-action"> 
+                      latitude: {{ nestedValue }} 
+                    </li>
+                    <li v-else class="list-group-item list-group-item-action"> longitude: {{ nestedValue }} </li>
+                  </div> -->
+                </div>
+                <li v-else class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
               </div>
+            </ul>
+           </div> 
+
+           <div class="col">
+            <h4> Company </h4>
+            <div v-if="Object.keys(user).length!== 0" v-for="(value, key) in user.company">
+              <li class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
             </div>
-            <li v-else class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
+           </div> 
+
+
           </div>
+        </div>
 
-          <h4> Company </h4>
-          <div v-for="(value, key) in user.company">
-            <li class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
-          </div>
-
-        </ul>
-
-
-      </div>
 
   </div>
 </template>
@@ -55,7 +66,6 @@ export default {
   methods: {
 
   }
-
 }
 
 
