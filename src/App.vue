@@ -1,7 +1,7 @@
 <template>
 
-<p> {{ message }}</p>
-<ContactList/>
+<div v-if="users.length"></div>
+<ContactList :users=users />
 
 </template>
 
@@ -13,7 +13,8 @@ export default {
   name: 'App',
   data() {
     return {
-      message: "xxxxxxxx"
+      users: [],
+      selectedUser: ""
     }
   },
   components: {
@@ -21,7 +22,10 @@ export default {
   },
 
   mounted() {
-    console.log(`App component is now mounted.`)
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data =>this.users = data)
+    .catch(err => console.log(err.message))
   }
 }
 
