@@ -2,11 +2,14 @@
   <div>
     <p> Contact List</p>
 
-    <input type="text" id="username" v-model="username">
-    <p> {{ username }}</p>
+    <input type="text" v-model="searchUser">
 
     <div v-if="users.length">
-      <p> {{ users }}</p>
+
+      <div v-for="(value) in filteredUsers" >
+          <p @click="$emit('setUser', value)"> {{ value.name }}</p>
+      </div>
+
     </div>
 
 
@@ -22,11 +25,18 @@ export default {
   props: ['users'],
   data() {
     return {
-      username: ""
+      searchUser: ""
     }
   },
   methods: {
 
+  },
+    computed: {
+    filteredUsers() {
+      return this.users.filter(item => {
+         return item.name.toLowerCase().indexOf(this.searchUser.toLowerCase()) > -1
+      })
+    }
   }
 
 }
@@ -37,5 +47,9 @@ export default {
 
 
 <style scoped>
+
+p{
+  cursor: pointer;
+}
 
 </style>

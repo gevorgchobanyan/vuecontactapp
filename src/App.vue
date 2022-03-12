@@ -1,7 +1,9 @@
 <template>
 
-<div v-if="users.length"></div>
-<ContactList :users=users />
+<ContactList 
+  :users=users
+  @setUser="setSelectedUser"
+/>
 
 </template>
 
@@ -15,6 +17,11 @@ export default {
     return {
       users: [],
       selectedUser: ""
+    }
+  },
+  methods: {
+    setSelectedUser(value){
+      console.log(value)
     }
   },
   components: {
