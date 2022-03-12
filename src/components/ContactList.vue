@@ -1,14 +1,26 @@
 <template>
-  <div>
-    <p> Contact List</p>
+  <div class="position-absolute top-0 start-0 w-25">
 
-    <input type="text" v-model="searchUser">
+    <h3> Contact List</h3>
+    <input 
+      class="form-control mr-sm-2" 
+      type="text" 
+      placeholder="Search" 
+      aria-label="Search" 
+      v-model="searchUser"
+    >
+
 
     <div v-if="users.length">
 
-      <div v-for="value in filteredUsers" >
-          <p @click="$emit('setUser', value)"> {{ value.name }}</p>
-      </div>
+
+      <ul class="list-group">
+        <div v-for="value in filteredUsers" >
+            <li class="list-group-item list-group-item-action" @click="$emit('setUser', value)"> 
+              {{ value.name }}</li>
+        </div>
+      </ul>
+
 
     </div>
 
@@ -48,7 +60,7 @@ export default {
 
 <style scoped>
 
-p{
+li{
   cursor: pointer;
 }
 
