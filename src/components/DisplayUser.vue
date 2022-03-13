@@ -4,26 +4,24 @@
 
 
 
-
-
         <div class="container border">
           <div class="row">
 
            <div class="col">
             <h4> User </h4>
-            <ul class="list-group" v-if="Object.keys(user).length!== 0">
-              <li class="list-group-item list-group-item-action"> name: {{ user.name }} </li>
-              <li class="list-group-item list-group-item-action"> username: {{ user.username }} </li>
-              <li class="list-group-item list-group-item-action"> email: {{ user.email }} </li>
-              <li class="list-group-item list-group-item-action"> phone: {{ user.phone }} </li>
-              <li class="list-group-item list-group-item-action"> website: {{ user.website }} </li>
+            <ul class="list-group" v-if="Object.keys(getClickedUser).length!== 0">
+              <li class="list-group-item list-group-item-action"> name: {{ getClickedUser.name }} </li>
+              <li class="list-group-item list-group-item-action"> username: {{ getClickedUser.username }} </li>
+              <li class="list-group-item list-group-item-action"> email: {{ getClickedUser.email }} </li>
+              <li class="list-group-item list-group-item-action"> phone: {{ getClickedUser.phone }} </li>
+              <li class="list-group-item list-group-item-action"> website: {{ getClickedUser.website }} </li>
             </ul>
            </div> 
 
           <div class="col">
             <h4> Address </h4>
-            <ul class="list-group" v-if="Object.keys(user).length!== 0">
-              <div v-for="(value, key) in user.address" >
+            <ul class="list-group" v-if="Object.keys(getClickedUser).length!== 0">
+              <div v-for="(value, key) in getClickedUser.address" >
                 <div v-if="key === 'geo'"> 
 <!--                   <div v-for="(nestedValue, nestedKey) in value">
                     <li v-if="nestedKey === 'lat'" class="list-group-item list-group-item-action"> 
@@ -39,7 +37,7 @@
 
            <div class="col">
             <h4> Company </h4>
-            <div v-if="Object.keys(user).length!== 0" v-for="(value, key) in user.company">
+            <div v-if="Object.keys(getClickedUser).length!== 0" v-for="(value, key) in getClickedUser.company">
               <li class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
             </div>
            </div> 
@@ -55,13 +53,21 @@
 
 
 <script>
-  
+
+import { mapGetters } from 'vuex'  
+
 export default {
   name: 'DisplayUser',
-  props: ['user'],
   data() {
     return {
     }
+  },
+  computed: {
+
+      ...mapGetters([
+        'getClickedUser',
+
+      ])
   },
   methods: {
 

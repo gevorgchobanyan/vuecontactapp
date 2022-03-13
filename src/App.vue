@@ -1,13 +1,9 @@
 <template>
 
-<ContactList 
-  :users=users
-  @setUser="setSelectedUser"
-/>
+<ContactList/>
 
-<DisplayUser
-:user=selectedUser
-/>
+<DisplayUser/>
+
 
 </template>
 
@@ -16,15 +12,14 @@
 import ContactList from './components/ContactList.vue'
 import DisplayUser from './components/DisplayUser.vue'
 
-
 export default {
   name: 'App',
   data() {
     return {
-      users: [],
       selectedUser: ""
     }
   },
+
   methods: {
     setSelectedUser(value){
       this.selectedUser = value
@@ -36,10 +31,7 @@ export default {
   },
 
   mounted() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(res => res.json())
-    .then(data =>this.users = data)
-    .catch(err => console.log(err.message))
+    this.$store.dispatch('setUsers')
   }
 }
 
