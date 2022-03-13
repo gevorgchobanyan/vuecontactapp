@@ -1,9 +1,13 @@
 <template>
 
-<ContactList/>
+  <div class="container">
+    <div class="row">
+      
+      <ContactList/>
+      <DisplayUser/>
 
-<DisplayUser/>
-
+    </div>
+  </div>
 
 </template>
 

@@ -1,13 +1,12 @@
 <template>
-  <div class="position-absolute top-0 end-0 w-75 border">
-    <h3> Display User Details</h3>
 
+  <div class="col-lg-9 col-md-9 col-sm-9 border">
 
-
-        <div class="container border">
-          <div class="row">
-
-           <div class="col">
+    <div class="container">
+      <div class="row">
+        <h4>Detailed User Information</h4>
+        
+           <div class="col-lg-4 col-md-6 col-sm-12 border">
             <h4> User </h4>
             <ul class="list-group" v-if="Object.keys(getClickedUser).length!== 0">
               <li class="list-group-item list-group-item-action"> name: {{ getClickedUser.name }} </li>
@@ -18,34 +17,26 @@
             </ul>
            </div> 
 
-          <div class="col">
+          <div class="col-lg-4 col-md-6 col-sm-12 border">
             <h4> Address </h4>
             <ul class="list-group" v-if="Object.keys(getClickedUser).length!== 0">
               <div v-for="(value, key) in getClickedUser.address" >
                 <div v-if="key === 'geo'"> 
-<!--                   <div v-for="(nestedValue, nestedKey) in value">
-                    <li v-if="nestedKey === 'lat'" class="list-group-item list-group-item-action"> 
-                      latitude: {{ nestedValue }} 
-                    </li>
-                    <li v-else class="list-group-item list-group-item-action"> longitude: {{ nestedValue }} </li>
-                  </div> -->
                 </div>
                 <li v-else class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
               </div>
             </ul>
            </div> 
 
-           <div class="col">
+           <div class="col-lg-4 col-md-12 col-sm-12 border">
             <h4> Company </h4>
             <div v-if="Object.keys(getClickedUser).length!== 0" v-for="(value, key) in getClickedUser.company">
               <li class="list-group-item list-group-item-action"> {{ key }}: {{ value }} </li>
             </div>
-           </div> 
+           </div>
 
-
-          </div>
-        </div>
-
+      </div>
+    </div>
 
   </div>
 </template>

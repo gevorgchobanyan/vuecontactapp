@@ -1,30 +1,32 @@
 <template>
-  <div class="position-absolute top-0 start-0 w-25">
+  <div class="col-lg-3 col-md-3 col-sm-3 border">
 
-    <h3> Contact List</h3>
-    <input 
-      class="form-control mr-sm-2 " 
-      type="text" 
-      placeholder="Search" 
-      aria-label="Search" 
-      v-model="searchUser"
-      @click="resetClickedUser"
-    >
+    <div class="container">
+      <div class="row">
 
+        <div class="col">
+          <h4> Contact List</h4>
+          <input 
+            class="form-control" 
+            type="text" 
+            placeholder="Search" 
+            aria-label="Search" 
+            v-model="searchUser"
+            @click="resetClickedUser"
+          >
 
-    <div v-if="getUsers.length">
-
-
-      <ul class="list-group">
-        <div v-for="value in filteredUsers" >
-            <li class="list-group-item list-group-item-action" @click="setClickedUser(value)"> 
-              {{ value.name }}</li>
+          <div v-if="getUsers.length">
+            <ul class="list-group">
+              <div v-for="value in filteredUsers" >
+                  <li class="list-group-item list-group-item-action" @click="setClickedUser(value)"> 
+                    {{ value.name }}</li>
+              </div>
+            </ul>
+          </div>
         </div>
-      </ul>
 
-
+      </div>
     </div>
-
 
   </div>
 </template>
