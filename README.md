@@ -1,6 +1,6 @@
 Instructions on how to run the code
 
-Requirements for Vue LCI:
+Requirements for Vue project:
 - NodeJs - https://nodejs.org/en/download/ (nodeJS installation)
 - npm install -g @vue/cli (vue cli installation)
 - cd <project-directory> (change directory to project folder)
